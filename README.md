@@ -42,3 +42,8 @@ Definir prazo para devolução e gerenciar multas por atraso.
 - Spring Web
 - JPA
 - PosgresSQL
+
+
+## Modelagem do Banco de Dados
+
+<img src="utils/der.png">
