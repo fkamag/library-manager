@@ -12,7 +12,7 @@ public class AddressEntity {
     private String userAddress;
     private String city;
     private String state;
-    private Integer zipCode;
+    private String zipCode;
 
     public Long getId() {
         return id;
@@ -46,11 +46,11 @@ public class AddressEntity {
         this.state = state;
     }
 
-    public Integer getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(Integer zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 }
