@@ -23,4 +23,16 @@ public class AddressController {
     public List<AddressEntity> findAll(){
         return service.findAll();
     }
+
+    @PutMapping()
+    public AddressEntity change(@RequestBody AddressEntity address){
+        return service.change(address);
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable Long id){
+        service.delete(id);
+        return String.format("Endereço com Id %d deletado com sucesso! ", id);
+    }
+
 }

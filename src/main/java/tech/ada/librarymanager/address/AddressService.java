@@ -20,4 +20,15 @@ public class AddressService {
     public List<AddressEntity> findAll() {
         return repository.findAll();
     }
+
+    public AddressEntity change(AddressEntity address) {
+       AddressEntity changed = repository.save(address);
+        return changed;
+    }
+
+    public void delete(Long id) {
+        AddressEntity address = repository.findById(id)
+                .orElseThrow();
+        repository.delete(address);
+    }
 }
