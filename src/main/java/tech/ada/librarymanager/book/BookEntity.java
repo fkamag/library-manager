@@ -14,7 +14,7 @@ public class BookEntity {
   private Integer publicationDate;
   private String genre;
   private Integer numberOfPages;
-  private Integer isbn;
+  private String isbn;
   private Boolean isAvailable;
 
   public Long getId() {
@@ -65,11 +65,11 @@ public class BookEntity {
     this.numberOfPages = numberOfPages;
   }
 
-  public Integer getIsbn() {
+  public String getIsbn() {
     return isbn;
   }
 
-  public void setIsbn(Integer isbn) {
+  public void setIsbn(String isbn) {
     this.isbn = isbn;
   }
 
