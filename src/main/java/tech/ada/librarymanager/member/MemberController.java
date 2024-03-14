@@ -14,7 +14,7 @@ public class MemberController {
     }
 
     @PostMapping("/create")
-    public String create(@RequestBody MemberEntity member){
+    public String create(@RequestBody MemberDTO member){
         return service.create(member);
     }
 
