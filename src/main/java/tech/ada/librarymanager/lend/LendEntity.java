@@ -1,6 +1,7 @@
 package tech.ada.librarymanager.lend;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import tech.ada.librarymanager.book.BookEntity;
 import tech.ada.librarymanager.member.MemberEntity;
 
@@ -21,6 +22,15 @@ public class LendEntity {
     private LocalDate lendDate;
     private LocalDate returnDate;
     private Double lateFee;
+
+    public LendEntity() {}
+
+    public LendEntity(LendDTO lendDTO) {
+        this.id = lendDTO.id();
+        this.lendDate = LocalDate.now();
+        this.returnDate = lendDate.plusDays(7);
+        this.lateFee = 0.0;
+    }
 
     public Long getId() {
         return id;
