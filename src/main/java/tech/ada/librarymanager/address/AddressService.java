@@ -22,8 +22,7 @@ public class AddressService {
     }
 
     public AddressEntity change(AddressEntity address) {
-       AddressEntity changed = repository.save(address);
-        return changed;
+       return repository.save(address);
     }
 
     public void delete(Long id) {
