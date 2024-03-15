@@ -24,7 +24,7 @@ public class MemberController {
     }
 
     @PutMapping()
-    public MemberEntity change(@RequestBody MemberEntity member){
+    public MemberEntity change(@RequestBody MemberDTO member){
         return service.change(member);
     }
 

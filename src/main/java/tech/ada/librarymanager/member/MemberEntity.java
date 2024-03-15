@@ -12,10 +12,19 @@ public class MemberEntity {
     private Long id;
     private String name;
     private String email;
-    private Boolean isAvailable;
+    private Boolean hasPermission;
     @ManyToOne
     @JoinColumn(name = "address_id")
     private AddressEntity address;
+
+    public MemberEntity() {}
+
+    public MemberEntity(MemberDTO memberDTO) {
+        this.id = memberDTO.id();
+        this.name = memberDTO.name();
+        this.email = memberDTO.email();
+        this.hasPermission = memberDTO.hasPermission();
+    }
 
     public Long getId() {
         return id;
@@ -41,12 +50,12 @@ public class MemberEntity {
         this.email = email;
     }
 
-    public Boolean getAvailable() {
-        return isAvailable;
+    public Boolean getHasPermission() {
+        return hasPermission;
     }
 
-    public void setAvailable(Boolean available) {
-        isAvailable = available;
+    public void setHasPermission(Boolean hasPermission) {
+        this.hasPermission = hasPermission;
     }
 
     public AddressEntity getAddress() {

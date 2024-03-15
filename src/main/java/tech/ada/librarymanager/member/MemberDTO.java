@@ -5,10 +5,9 @@ import jakarta.persistence.ManyToOne;
 import tech.ada.librarymanager.address.AddressEntity;
 
 public record MemberDTO(
+    Long id,
     String name,
     String email,
-    Boolean isAvailable,
+    Boolean hasPermission,
     Long address_id
-) {
-
-}
+) {}
