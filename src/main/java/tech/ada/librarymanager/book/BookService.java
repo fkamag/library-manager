@@ -3,6 +3,8 @@ package tech.ada.librarymanager.book;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import tech.ada.librarymanager.exceptions.AddressNotFoundException;
+import tech.ada.librarymanager.exceptions.BookNotFoundException;
 
 @Service
 public class BookService {
@@ -28,7 +30,7 @@ public class BookService {
 
     public void delete(Long id) {
         BookEntity book = repository.findById(id)
-                .orElseThrow();
+                .orElseThrow(BookNotFoundException::new);
         repository.delete(book);
     }
 

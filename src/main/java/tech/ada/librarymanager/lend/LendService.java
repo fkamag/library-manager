@@ -8,6 +8,9 @@ import tech.ada.librarymanager.address.AddressEntity;
 import tech.ada.librarymanager.address.AddressRepository;
 import tech.ada.librarymanager.book.BookEntity;
 import tech.ada.librarymanager.book.BookRepository;
+import tech.ada.librarymanager.exceptions.BookNotFoundException;
+import tech.ada.librarymanager.exceptions.LendNotFoundException;
+import tech.ada.librarymanager.exceptions.MemberNotFoundException;
 import tech.ada.librarymanager.member.MemberDTO;
 import tech.ada.librarymanager.member.MemberEntity;
 import tech.ada.librarymanager.member.MemberRepository;
@@ -27,9 +30,9 @@ public class LendService {
 
   public String create(LendDTO lend){
     MemberEntity member = memberRepository.findById(lend.memberId())
-        .orElseThrow();
+        .orElseThrow(MemberNotFoundException::new);
     BookEntity book = bookRepository.findById(lend.bookId())
-        .orElseThrow();
+        .orElseThrow(BookNotFoundException::new);
     LendEntity lendEntity = new LendEntity(lend);
     lendEntity.setBook(book);
     lendEntity.setMember(member);
@@ -45,7 +48,7 @@ public class LendService {
 
   public LendEntity changeDate(LendDTO lendDTO) {
     LendEntity lend = repository.findById(lendDTO.id())
-        .orElseThrow();
+        .orElseThrow(LendNotFoundException::new);
     lend.setLateFee(lendDTO.dias() * 5.00);
 
     return lend;
@@ -53,7 +56,7 @@ public class LendService {
 
   public LendEntity change(Long id) {
     LendEntity lend = repository.findById(id)
-        .orElseThrow();
+        .orElseThrow(LendNotFoundException::new);
     LocalDate today = LocalDate.now();
     LocalDate dataRetorno = lend.getReturnDate();
 
@@ -66,10 +69,10 @@ public class LendService {
   }
 
 
-
+// Optamos por não deixar deletar um empréstimo
 //  public void delete(Long id) {
-//    MemberEntity address = repository.findById(id)
-//        .orElseThrow();
+//    LendEntity lend = repository.findById(id)
+//        .orElseThrow(LendNotFoundException::new);
 //    repository.delete(address);
 //  }
 
