@@ -3,6 +3,7 @@ package tech.ada.librarymanager.address;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import tech.ada.librarymanager.exceptions.AddressNotFoundException;
 
 @Service
 public class AddressService {
@@ -22,12 +23,13 @@ public class AddressService {
     }
 
     public AddressEntity change(AddressEntity address) {
-       return repository.save(address);
+        repository.findById(address.getId()).orElseThrow(AddressNotFoundException::new);
+        return repository.save(address);
     }
 
     public void delete(Long id) {
         AddressEntity address = repository.findById(id)
-                .orElseThrow();
+                .orElseThrow(AddressNotFoundException::new);
         repository.delete(address);
     }
 }
